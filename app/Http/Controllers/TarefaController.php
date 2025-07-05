@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\RepositoryInterface;
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
 
 class TarefaController extends Controller
 {
-    public function __construct()
+    protected $tarefaRepository;
+    public function __construct(RepositoryInterface $repository)
     {
         $this->middleware("auth");
+        $this->tarefaRepository = $repository;
     }
 
     /**
@@ -33,7 +36,7 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        $tarefa = Tarefa::create($request->all());
+        $tarefa = $this->tarefaRepository->create($request->all());
         return redirect()->route('tarefa.show', ['tarefa' => $tarefa->id]);
     }
 
