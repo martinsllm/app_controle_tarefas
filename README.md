@@ -14,7 +14,7 @@ git clone https://github.com/martinsllm/app_controle_tarefas.git
 cd app_controle_tarefas
 ```
 
-## Configuração - Backend
+## Configuração
 
 ``` bash
 # Instalar dependências do projeto
