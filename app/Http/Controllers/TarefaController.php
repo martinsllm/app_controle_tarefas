@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TarefaRequest;
 use App\Interfaces\RepositoryInterface;
 use App\Mail\NovaTarefaMail;
 use App\Models\Tarefa;
@@ -38,7 +39,7 @@ class TarefaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TarefaRequest $request)
     {
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
@@ -63,15 +64,16 @@ class TarefaController extends Controller
      */
     public function edit(Tarefa $tarefa)
     {
-        //
+        return view('tarefa.edit', ['tarefa' => $tarefa]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tarefa $tarefa)
+    public function update(TarefaRequest $request, Tarefa $tarefa)
     {
-        //
+        $tarefa->update($request->all());
+        return redirect()->route('tarefa.show', ['tarefa' => $tarefa]);
     }
 
     /**
