@@ -13,6 +13,5 @@ class TarefasExport implements FromCollection
     public function collection()
     {
         return auth()->user()->tarefas()->get();
-
     }
 }
