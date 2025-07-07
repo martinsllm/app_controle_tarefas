@@ -8,10 +8,11 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 class TarefasExport implements FromCollection
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
-        return Tarefa::all();
+        return auth()->user()->tarefas()->get();
+
     }
 }
