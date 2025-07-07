@@ -21,6 +21,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
     ->name('home')
     ->middleware('verified');
 
+Route::get('tarefa/export', [App\Http\Controllers\TarefaController::class, 'export'])->name('tarefa.export');
+
 Route::resource('/tarefa', App\Http\Controllers\TarefaController::class)
     ->middleware('verified');
 
