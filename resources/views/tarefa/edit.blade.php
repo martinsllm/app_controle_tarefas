@@ -23,6 +23,7 @@
                                 @include('layouts._partials.error', ['field_name' => 'data_limite_conclusao'])
                             </div>
                             <button type=" submit" class="btn btn-success">Confirmar</button>
+                            <a href="{{ url()->previous() }}" class="btn btn-danger">Voltar</a>
                         </form>
                     </div>
                 </div>
