@@ -15,6 +15,6 @@ class TarefaRepository implements RepositoryInterface
 
     public function getAllWhere($user_id)
     {
-        return Tarefa::where('user_id', $user_id)->get();
+        return Tarefa::where('user_id', $user_id)->paginate(10);
     }
 }
