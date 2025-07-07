@@ -43,6 +43,8 @@
                                 </li>
                             </ul>
                         </nav>
+
+                        <a class="btn btn-success" href="{{ route('tarefa.create')}}">Nova Tarefa</a>
                     </div>
                 </div>
             </div>
