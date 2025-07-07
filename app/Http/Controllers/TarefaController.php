@@ -7,6 +7,7 @@ use App\Http\Requests\TarefaRequest;
 use App\Interfaces\RepositoryInterface;
 use App\Mail\NovaTarefaMail;
 use App\Models\Tarefa;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Mail;
@@ -105,5 +106,12 @@ class TarefaController extends Controller
         }
 
         return redirect()->route('tarefa.index');
+    }
+
+    public function exportPDF()
+    {
+        $tarefas = auth()->user()->tarefas;
+        $pdf = PDF::loadView('tarefa.pdf', ['tarefas' => $tarefas]);
+        return $pdf->download('lista_tarefas.pdf');
     }
 }
