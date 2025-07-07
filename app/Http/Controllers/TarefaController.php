@@ -22,7 +22,9 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = auth()->user()->id;
+        $tarefas = $this->tarefaRepository->getAllWhere($user_id);
+        return view('tarefa.index', ['tarefas' => $tarefas]);
     }
 
     /**

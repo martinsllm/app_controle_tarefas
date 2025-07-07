@@ -12,4 +12,9 @@ class TarefaRepository implements RepositoryInterface
     {
         return Tarefa::create($attributes);
     }
+
+    public function getAllWhere($user_id)
+    {
+        return Tarefa::where('user_id', $user_id)->get();
+    }
 }
